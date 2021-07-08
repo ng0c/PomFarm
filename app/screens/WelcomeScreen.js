@@ -12,8 +12,11 @@ import {
     SafeAreaView 
 } from 'react-native';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import PlantScreen from './PlantScreen';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({navigation}) {
     const {landscape} = useDeviceOrientation();
 
     return (
@@ -58,7 +61,7 @@ function WelcomeScreen(props) {
                 <Text style={styles.buttonTextStyle}>Login with Twitter</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonGPlusStyle} activeOpacity={0.5}>
+            <TouchableOpacity style={styles.buttonGPlusStyle} activeOpacity={0.5} onPress={() => navigation.navigate('PlantScreen')}>
                 <Image
                     source={
                     require("../assets/pom-farm-logo.png")
